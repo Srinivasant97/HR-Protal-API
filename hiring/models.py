@@ -9,6 +9,7 @@ class Applicant(models.Model):
     apl_email = models.EmailField(max_length=100)
     apl_phone = models.CharField(max_length=20)
     apl_joined = models.DateTimeField(auto_now_add=True)
+    apl_linkedin = models.URLField(max_length=1000, null=True)
 
     class Meta:
         db_table = 'applicant'
