@@ -6,7 +6,7 @@ from django.db import models
 class Applicant(models.Model):
     apl_id = models.AutoField(primary_key=True)
     apl_name = models.CharField(max_length=100)
-    apl_email = models.EmailField(max_length=100)
+    apl_email = models.EmailField(max_length=100, unique=True)
     apl_phone = models.CharField(max_length=20)
     apl_joined = models.DateTimeField(auto_now_add=True)
     apl_linkedin = models.URLField(max_length=1000, null=True)
@@ -27,7 +27,7 @@ class ApplicantDetails(models.Model):
 class Employee(models.Model):
     emp_id = models.AutoField(primary_key=True)
     emp_name = models.CharField(max_length=100)
-    emp_email = models.EmailField(max_length=100)
+    emp_email = models.EmailField(max_length=100, unique=True)
     emp_phone = models.CharField(max_length=20)
     emp_joined = models.DateTimeField(auto_now_add=True)
     emp_role = models.ForeignKey('Role', on_delete=models.CASCADE)
@@ -116,6 +116,7 @@ class EmployeeAssetRegistry(models.Model):
 class JobApplication(models.Model):
     job_app_id = models.AutoField(primary_key=True)
     job_app_title = models.CharField(max_length=100)
+    job_app_sub_title = models.CharField(max_length=100, null=True)
     job_app_description = models.CharField(max_length=500)
     job_app_location = models.CharField(max_length=100)
     job_app_salary = models.IntegerField()
@@ -146,7 +147,6 @@ class JobApplicant(models.Model):
         JobApplication, on_delete=models.CASCADE)
     APPLICATION_STATUS_CHOICES = (
         ('APPLIED', 'APPLIED'),
-        ('PENDING', 'PENDING'),
         ('ACCEPTED', 'ACCEPTED'),
         ('SCHEDULED', 'SCHEDULED'),
         ('INTERVIEWED', 'INTERVIEWED'),

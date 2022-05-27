@@ -1,4 +1,4 @@
-from .models import Applicant, ApplicantDetails, Employee, Role, EmployeePersonalDetails, EmployeeAccountingDetails, EmployeeJobDetails, EmployeeAssetRegistry, JobApplication, JobApplicant
+from .models import Applicant, ApplicantDetails, Employee, Role, EmployeePersonalDetails, EmployeeAccountingDetails, EmployeeJobDetails, EmployeeAssetRegistry, JobApplication, JobApplicant, Role
 from rest_framework import serializers
 from rest_framework import viewsets, status
 from rest_framework.views import APIView
@@ -212,3 +212,31 @@ def job_applicant_update(request, pk):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def employee_by_email(request, email):
+    if request.method == 'GET':
+        # employee = Employee.objects.get(emp_email=email)
+        # employee = {
+        #     **EmployeeSerializer(employee).data,
+        #     **RoleSerializer(employee.emp_role).data,
+        # }
+
+        try:
+            employee = Employee.objects.get(emp_email=email)
+            employee = {
+                **EmployeeSerializer(employee).data,
+                **RoleSerializer(employee.emp_role).data,
+            }
+            return Response(employee, status=status.HTTP_200_OK)
+        except:
+            try:
+                applicant = Applicant.objects.get(apl_email=email)
+                applicant = {
+                    **ApplicantSerializer(applicant).data,
+                    'role_name': 'APPLICANT'
+                }
+                return Response(applicant, status=status.HTTP_200_OK)
+            except:
+                return Response(status=status.HTTP_404_NOT_FOUND)
