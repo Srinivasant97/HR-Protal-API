@@ -201,3 +201,14 @@ def job_applicant_list(request):
             }
             all_job_applicants.append(each_job_applicant)
         return Response(all_job_applicants, status=status.HTTP_200_OK)
+
+
+@api_view(['PATCH'])
+def job_applicant_update(request, pk):
+    if request.method == 'PATCH':
+        job_applicant = JobApplicant.objects.get(job_appl_id=pk)
+        serializer = JobApplicantSerializer(job_applicant, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -7,7 +7,7 @@ from .views import (
     role,
     employee_personal_details,
     employee_accounting_details,
-    employee_job_details, job_application, job_applicant, job_application_list, job_applicant_list
+    employee_job_details, job_application, job_applicant, job_application_list, job_applicant_list, job_applicant_update
 )
 from . import views
 
@@ -25,4 +25,5 @@ urlpatterns = [
     path('job_applicant', views.job_applicant),
     path('job_application_list', views.job_application_list),
     path('job_applicant_list', views.job_applicant_list),
+    path('job_applicant_update/<int:pk>', views.job_applicant_update),
 ]

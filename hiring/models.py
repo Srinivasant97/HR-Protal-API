@@ -147,11 +147,10 @@ class JobApplicant(models.Model):
     APPLICATION_STATUS_CHOICES = (
         ('APPLIED', 'APPLIED'),
         ('PENDING', 'PENDING'),
-        ('APPROVED', 'APPROVED'),
+        ('ACCEPTED', 'ACCEPTED'),
         ('SCHEDULED', 'SCHEDULED'),
         ('INTERVIEWED', 'INTERVIEWED'),
         ('SELECTED', 'SELECTED'),
-        ('ACCEPTED', 'ACCEPTED'),
         ('REJECTED', 'REJECTED'),
     )
     job_appl_status = models.CharField(
