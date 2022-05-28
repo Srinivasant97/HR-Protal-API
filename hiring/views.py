@@ -102,6 +102,7 @@ def employee_list(request):
         for employee in employees:
             each_employee = {
                 ** EmployeeSerializer(employee).data,
+                **RoleSerializer(employee.emp_role).data,
             }
             employee_personal_data = EmployeePersonalDetails.objects.filter(
                 emp_personal_emp_id=employee.emp_id)
@@ -226,6 +227,7 @@ def employee_by_email(request, email):
         try:
             employee = Employee.objects.get(emp_email=email)
             employee = {
+                'id': employee.emp_id,
                 **EmployeeSerializer(employee).data,
                 **RoleSerializer(employee.emp_role).data,
             }
@@ -234,6 +236,7 @@ def employee_by_email(request, email):
             try:
                 applicant = Applicant.objects.get(apl_email=email)
                 applicant = {
+                    'id': applicant.apl_id,
                     **ApplicantSerializer(applicant).data,
                     'role_name': 'APPLICANT'
                 }
