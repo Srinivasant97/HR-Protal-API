@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.db.backends.postgresql',
     'hiring.apps.HiringConfig',
+    'tasks.apps.TasksConfig',
     'rest_framework',
     'corsheaders',
 ]
