@@ -25,10 +25,7 @@ SECRET_KEY = 'django-insecure-znav@83(lp+6k)^han)!z#*sr1id07^&n_@bmd442c4!1dt^!s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< hirarc/settings.py
-ALLOWED_HOSTS = ["*"]
-=======
->>>>>>> hirarc/settings.py
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -147,5 +144,4 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ALLOWED_HOSTS = []
 CORS_ORIGIN_ALLOW_ALL = True
