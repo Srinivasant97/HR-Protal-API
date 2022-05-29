@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-znav@83(lp+6k)^han)!z#*sr1id07^&n_@bmd442c4!1dt^!s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'tasks.apps.TasksConfig',
     'rest_framework',
     'corsheaders',
+    'bot',
 ]
 
 MIDDLEWARE = [
@@ -82,11 +83,11 @@ WSGI_APPLICATION = 'hirarc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hirarc',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5433',
+        'NAME': 'd5kat80epnpgdp',
+        'USER': 'unummtksnuhtkd',
+        'PASSWORD': '4012967097729ea5c8692b51d84ed96252decb8e2bb81481a3c9a5294597fc87',
+        'HOST': 'ec2-54-165-90-230.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
