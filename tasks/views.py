@@ -8,6 +8,7 @@ import hashlib
 import datetime
 from django.shortcuts import render
 from .models import Task, TaskReview, RewardCoins
+from hiring.models import Employee
 
 from rest_framework import serializers
 from rest_framework import viewsets, status
@@ -59,6 +60,11 @@ def task(request, pk):
 def task_review(request, pk):
     if request.method == 'POST':
         serializer = TaskReviewSerializer(data=request.data)
+        tsk = Task.objects.get(task_id=request.data['task_review_task_id'])
+        emp = tsk.task_assigned_to
+        coins = request.data['task_review_rating']
+        emp.emp_crypto_coins += coins
+        emp.save()
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -194,7 +200,7 @@ def mine_block(request):
         nonce = blockchain.proof_of_work(previous_nonce)
         previous_hash = blockchain.hash(previous_block)
         blockchain.add_transaction(
-            sender=root_node, receiver=node_address, amount=1.15, time=str(datetime.datetime.now()))
+            sender=root_node, receiver=node_address, amount=0, time=str(datetime.datetime.now()))
         block = blockchain.create_block(nonce, previous_hash)
         response = {'message': 'Congratulations, you just mined a block!',
                     'index': block['index'],

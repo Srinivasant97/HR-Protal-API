@@ -31,6 +31,7 @@ class Employee(models.Model):
     emp_phone = models.CharField(max_length=20)
     emp_joined = models.DateTimeField(auto_now_add=True)
     emp_role = models.ForeignKey('Role', on_delete=models.CASCADE)
+    emp_crypto_coins = models.IntegerField(default=0)
 
     class Meta:
         db_table = 'employee'
