@@ -79,17 +79,18 @@ WSGI_APPLICATION = 'hirarc.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         #'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': '*',
+#         'USER': '*',
+#         'PASSWORD': '*',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd5kat80epnpgdp',
-        'USER': 'unummtksnuhtkd',
-        'PASSWORD': '4012967097729ea5c8692b51d84ed96252decb8e2bb81481a3c9a5294597fc87',
-        'HOST': 'ec2-54-165-90-230.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
-}
 
 # DATABASES = {
 #     'default': {
